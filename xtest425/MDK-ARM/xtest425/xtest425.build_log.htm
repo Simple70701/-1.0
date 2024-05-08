@@ -29,7 +29,35 @@ Project File Date:  04/30/2024
 Build target 'xtest425'
 Note: source file '..\bsp\node.c' - object file renamed from 'xtest425\node.o' to 'xtest425\node_1.o'.
 Note: source file '..\bsp\node.c' - object file renamed from 'xtest425\node.o' to 'xtest425\node_1.o'.
-"xtest425\xtest425.axf" - 0 Error(s), 0 Warning(s).
+compiling node.c...
+"no source": Error:  #219: error while deleting file "xtest425\node_1.d": Permission denied
+..\bsp\node.c: 0 warnings, 1 error
+compiling interrupt.c...
+..\bsp\node.h(26): warning:  #1295-D: Deprecated declaration START_INIT - give arg types
+  void START_INIT();
+..\bsp\node.h(28): warning:  #1295-D: Deprecated declaration Motor_Send - give arg types
+  void Motor_Send();
+..\bsp\interrupt.h(21): warning:  #1295-D: Deprecated declaration MOTOR_NODE - give arg types
+  void MOTOR_NODE();
+..\bsp\interrupt.c: 3 warnings, 0 errors
+compiling node.c...
+..\bsp\interrupt.h(21): warning:  #1295-D: Deprecated declaration MOTOR_NODE - give arg types
+  void MOTOR_NODE();
+..\bsp\node.h(26): warning:  #1295-D: Deprecated declaration START_INIT - give arg types
+  void START_INIT();
+..\bsp\node.h(28): warning:  #1295-D: Deprecated declaration Motor_Send - give arg types
+  void Motor_Send();
+..\bsp\node.c: 3 warnings, 0 errors
+compiling main.c...
+compiling pid.c...
+..\bsp\interrupt.h(21): warning:  #1295-D: Deprecated declaration MOTOR_NODE - give arg types
+  void MOTOR_NODE();
+..\bsp\node.h(26): warning:  #1295-D: Deprecated declaration START_INIT - give arg types
+  void START_INIT();
+..\bsp\node.h(28): warning:  #1295-D: Deprecated declaration Motor_Send - give arg types
+  void Motor_Send();
+..\bsp\pid.c: 3 warnings, 0 errors
+"xtest425\xtest425.axf" - 1 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -53,7 +81,8 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.5.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:00
+Target not created.
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

@@ -4,8 +4,6 @@
 #include "main.h"
 #include "struct_typedef.h"
 #include "stdio.h"
-//∂®“Â
-
 
 typedef struct
 {

@@ -1,0 +1,28 @@
+--cpu Cortex-M3
+"songyao1.0\startup_stm32f103xb.o"
+"songyao1.0\main.o"
+"songyao1.0\gpio.o"
+"songyao1.0\tim.o"
+"songyao1.0\stm32f1xx_it.o"
+"songyao1.0\stm32f1xx_hal_msp.o"
+"songyao1.0\stm32f1xx_hal_gpio_ex.o"
+"songyao1.0\stm32f1xx_hal_tim.o"
+"songyao1.0\stm32f1xx_hal_tim_ex.o"
+"songyao1.0\stm32f1xx_hal.o"
+"songyao1.0\stm32f1xx_hal_rcc.o"
+"songyao1.0\stm32f1xx_hal_rcc_ex.o"
+"songyao1.0\stm32f1xx_hal_gpio.o"
+"songyao1.0\stm32f1xx_hal_dma.o"
+"songyao1.0\stm32f1xx_hal_cortex.o"
+"songyao1.0\stm32f1xx_hal_pwr.o"
+"songyao1.0\stm32f1xx_hal_flash.o"
+"songyao1.0\stm32f1xx_hal_flash_ex.o"
+"songyao1.0\stm32f1xx_hal_exti.o"
+"songyao1.0\system_stm32f1xx.o"
+"songyao1.0\node.o"
+"songyao1.0\interrupt.o"
+"songyao1.0\pid.o"
+--strict --scatter "songyao1.0\songyao1.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "songyao1.map" -o songyao1.0\songyao1.0
