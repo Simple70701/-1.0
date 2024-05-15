@@ -4,6 +4,8 @@
 #include "main.h"
 #include "tim.h"
 #include "pid.h"
+#include "string.h"
+#include "usart.h"
 
 
 #define IN1(state) HAL_GPIO_WritePin(GPIOB,GPIO_PIN_6,(GPIO_PinState)(state))
@@ -25,16 +27,18 @@ typedef struct
     pid_def selfpid;
     fp32 ref;
     fp32 set;
-    fp32 pid_pwm;
+    fp32 pid_speed;
 
 }pid_user;
 
 extern Motor motor[2];
+extern int pid_lock;
 
 
 
 void START_INIT(void);
 void MOTOR_NODE(void);
+void PWM_NODE(void);
 
 #endif
 

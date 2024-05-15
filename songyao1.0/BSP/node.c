@@ -1,7 +1,9 @@
 #include "node.h"
 
 Motor motor[2];
+//PID相关
 pid_user mypid[2];
+int pid_lock=0;
 
 //PID参数
 fp32 kpid[3]={10,-1,3};//kp,ki,kd系数
@@ -35,18 +37,36 @@ void START_INIT(void)
     
     motor[0].loopnum=0;
     motor[1].loopnum=0;
+    mypid[0].set=2;
+    mypid[1].set=2;
+}
+
+
+void PWM_NODE(void)
+{
+    IN1(1);
+    IN2(0);
+    IN3(1);
+    IN4(0);
 }
 
 void MOTOR_NODE(void)
 {
-    
-    for(int i=0;i<2;i++)
+    if(pid_lock==1)
     {
-        mypid[i].ref=motor[i].speed;
-        mypid[i].pid_pwm=PID_calc(&mypid[i].selfpid,mypid[i].ref,mypid[i].set);
-        PID_clear(&mypid[i].selfpid);
-    }
+        for(int i=0;i<2;i++)
+        {
+            mypid[i].ref=motor[i].speed;
+            mypid[i].pid_speed=PID_calc(&mypid[i].selfpid,mypid[i].ref,mypid[i].set);
+            PID_clear(&mypid[i].selfpid);
 
+        }
+
+        __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,mypid[0].pid_speed);
+        __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,mypid[1].pid_speed);
+        pid_lock=0;
+    }
+    
 
 }
 

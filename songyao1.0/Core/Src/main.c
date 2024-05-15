@@ -19,11 +19,13 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "node.h"
+#include "interrupt.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,6 +56,12 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+int fputc(int c,FILE*stream)
+{
+    HAL_UART_Transmit(&huart2,(uint8_t*)&c,1,0XFF);
+    return 0;
+}
+ 
 
 /* USER CODE END 0 */
 
@@ -89,6 +97,7 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
     START_INIT();
   /* USER CODE END 2 */
@@ -100,6 +109,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+//      char temp[20]="123123";v
+//      HAL_UART_Transmit(&huart2,(uint8_t*)temp,strlen(temp),50);
+      PWM_NODE();
+      MOTOR_NODE();
+
 
   }
   /* USER CODE END 3 */

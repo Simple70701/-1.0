@@ -28,7 +28,10 @@ songyao1.0\node.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 songyao1.0\node.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 songyao1.0\node.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 songyao1.0\node.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+songyao1.0\node.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 songyao1.0\node.o: ../Core/Inc/tim.h
 songyao1.0\node.o: ..\BSP\pid.h
 songyao1.0\node.o: ..\BSP\struct_typedef.h
 songyao1.0\node.o: E:\Promgram File\keil mdk c51\ARM\ARMCC\Bin\..\include\stdio.h
+songyao1.0\node.o: E:\Promgram File\keil mdk c51\ARM\ARMCC\Bin\..\include\string.h
+songyao1.0\node.o: ../Core/Inc/usart.h
