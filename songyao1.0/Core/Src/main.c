@@ -113,6 +113,7 @@ int main(void)
 //      HAL_UART_Transmit(&huart2,(uint8_t*)temp,strlen(temp),50);
       PWM_NODE();
 //      MOTOR_NODE();
+//      MOTOR_NODE();
       
 
   }

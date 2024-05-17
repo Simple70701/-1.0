@@ -8,9 +8,9 @@ pid_user mypid[2];
 int pid_lock=0;
 
 //PID参数
-fp32 kpid[3]={2,0,2};//kp,ki,kd系数
-fp32 max_out=130;
-fp32 max_iout=0;
+fp32 kpid[3]={4,3.5,0.04};//kp,ki,kd系数
+fp32 max_out=100;
+fp32 max_iout=50;
 
 
 
