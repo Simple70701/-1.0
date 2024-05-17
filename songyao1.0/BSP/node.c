@@ -1,16 +1,16 @@
 #include "node.h"
 
-#define RESO 1000/130
+#define RESO 400/170
 
-Motor motor[2];
+Motor motor[2]={0};
 //PID相关
-pid_user mypid[2];
+pid_user mypid[2]={0};
 int pid_lock=0;
 
 //PID参数
-fp32 kpid[3]={4,3.5,0.04};//kp,ki,kd系数
-fp32 max_out=100;
-fp32 max_iout=50;
+fp32 kpid[3]={13,3.5,0.04};//kp,ki,kd系数
+fp32 max_out=170;
+fp32 max_iout=10;
 
 
 
@@ -39,24 +39,15 @@ void START_INIT(void)
     
     motor[0].loopnum=0;
     motor[1].loopnum=0;
-    mypid[0].set=50;
-    mypid[1].set=50;
+    mypid[0].set=150;
+    mypid[1].set=150;
 }
 
 
-void PWM_NODE(void)
-{
-
-    IN1(1);
-    IN2(0);
-    IN3(1);
-    IN4(0);
-}
 
 void MOTOR_NODE(void)
 {
-    if(pid_lock==1)
-    {
+
         for(int i=0;i<2;i++)
         {
             mypid[i].ref=motor[i].speed;
@@ -64,11 +55,33 @@ void MOTOR_NODE(void)
             PID_clear(&mypid[i].selfpid);
 
         }
+
+        if(mypid[0].pid_speed>0)
+        {
+            IN1(0);
+            IN2(1);
+            __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,mypid[0].pid_speed*RESO);
+        }
+        else 
+        {
+            IN1(1);
+            IN2(0);
+            __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,mypid[0].pid_speed*RESO);
+        }
         
-        __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,mypid[0].pid_speed*RESO);
-        __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,mypid[1].pid_speed*RESO);
-        pid_lock=0;
-    }
+        if(mypid[1].pid_speed>0)
+        {
+            IN3(0);
+            IN4(1);
+            __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,mypid[1].pid_speed*RESO);
+        }
+        else 
+        {
+            IN3(1);
+            IN4(0);
+            __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,mypid[1].pid_speed*RESO);
+        }
+        
     
 
 }
