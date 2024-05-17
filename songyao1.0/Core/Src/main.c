@@ -112,8 +112,8 @@ int main(void)
 //      char temp[20]="123123";v
 //      HAL_UART_Transmit(&huart2,(uint8_t*)temp,strlen(temp),50);
       PWM_NODE();
-      MOTOR_NODE();
-
+//      MOTOR_NODE();
+      
 
   }
   /* USER CODE END 3 */
